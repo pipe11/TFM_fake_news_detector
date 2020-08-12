@@ -1,6 +1,6 @@
 data/news_cleaned_2018_02_13.csv
 data/news_csv_filtered.csv
 extra-vsm.ipynb
-07-word2vec.ipnyb
+07-word2vec.ipynb
 .ipynb_checkpoints/
 *.bz2
