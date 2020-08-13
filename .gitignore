@@ -1,5 +1,8 @@
 data/news_cleaned_2018_02_13.csv
 data/news_csv_filtered.csv
+01_nltk_corpus.ipnyb
+02_nltk_pos.ipnyb
+03_pos_tagger_es.ipynb
 extra-vsm.ipynb
 07_word2vec.ipynb
 .ipynb_checkpoints/
