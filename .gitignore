@@ -6,5 +6,5 @@ data/news_csv_filtered.csv
 extra-vsm.ipynb
 07_word2vec.ipynb
 06_spacy.ipynb
-*.ipynb_checkpoints/
+.ipynb_checkpoints/
 *.bz2
