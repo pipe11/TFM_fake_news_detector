@@ -1,3 +1,4 @@
+.ipynb_checkpoints/
 data/news_cleaned_2018_02_13.csv
 data/news_csv_filtered.csv
 01_nltk_corpus.ipynb
@@ -6,5 +7,4 @@ data/news_csv_filtered.csv
 extra-vsm.ipynb
 07_word2vec.ipynb
 06_spacy.ipynb
-.ipynb_checkpoints/
 *.bz2
