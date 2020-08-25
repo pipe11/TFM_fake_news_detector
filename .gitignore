@@ -1,4 +1,3 @@
-.ipynb_checkpoints
 **/*.ipynb_checkpoints/
 .ipynb_checkpoints/
 data/news_cleaned_2018_02_13.csv
