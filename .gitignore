@@ -1,5 +1,6 @@
 **/*.ipynb_checkpoints/
 .ipynb_checkpoints/
+645_webhose-2016-10_20170904091850.zip
 data/news_cleaned_2018_02_13.csv
 data/news_csv_filtered.csv
 01_nltk_corpus.ipynb
