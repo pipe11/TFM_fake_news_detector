@@ -1,0 +1,1 @@
+web: sh setup.sh && streamlit run fake_news_detector_app.py
