@@ -5,6 +5,8 @@ import numpy as np
 import nltk
 import re
 import spacy
+#need to switch to es_core_news_md pacy model. es_core_news_lg too large for Heroku.
+import es_core_news_md
 from nltk import FreqDist
 from lexical_diversity import lex_div as ld
 
@@ -51,7 +53,7 @@ def get_nsyllables(text):
 @st.cache(show_spinner = False)
 def get_news_features(headline, text):
     
-    nlp = spacy.load('es_core_news_lg')
+    nlp = es_core_news_md.load()
 
     ## headline ##
     headline = re.sub(r"http\S+", "", headline)
