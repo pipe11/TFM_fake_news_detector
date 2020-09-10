@@ -1,7 +1,9 @@
-# Fake News Detector
+<p align="center">
+  <img src="https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/wordcloud_fakenews.png">
+</p>
 ## Master Thesis in Data Science - KSchool
 
-This is the repository for my **Master Thesis** in **Data Science at KSchool**: **Fake News Detector**, a tool powered with **Machine Learning** to detect, predict and classify between **Fake News** from **Real news** in **Spanish language**. 
+This is the repository for my **Master Thesis in Data Science** at **KSchool**: **Fake News Detector**, a tool powered with **Machine Learning** to detect, predict and classify between **Fake News** from **Real news** in **Spanish language**. 
 
 This project resulted on the launch of a **web app** as a live demo. **¡Try it!**
 
