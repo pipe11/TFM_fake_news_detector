@@ -154,7 +154,50 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 
 # 7. Data Exploration Analysis
 
-------------------
+## Visualizations
+
+### WordCloud
+![WordCloud](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/wordcloud.png)
+
+### Number of Fake News and Real News
+This corpus which contains **3.974 articles** in Spanish language, divided in **2046 Real News** and **1918 Fake News**.
+![articles_count]()
+
+### Article topics
+The articles in this corpus covers news from 9 different topics: **Science, Sport, Economy, Education, Entertainment, Politics, Health, Security, and Society**.
+![articles_topic]()
+
+## Fake and real news topics
+![articles_topic_hue]()
+
+## Boxplots with outliers
+Through boxplots we can analyze features distributions and check if there are outliers in our data. And check if there ar some text with irregularities or text not corresponding to properly written articles.
+
+With this revision we observed that there are some articles that **don't have punctuations like points**, which are very important for our ratio and sentences features. Also there are some articles with **lot of punctuation and short sentences**. When I tried to found them on the corpus and checked the text it was the **results of Formula 1 championships**. We are going to **remove this outliers for our training** and also for the rest of our visualizations.
+
+![boxplots](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/boxplots_outliers.png)
+
+## Boxplots without outliers
+![boxplots_nooutliers](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/boxplots_nooutliers.png)
+
+## Correlation matrix
+Correlation between features:
+![boxplots_nooutliers](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/corr_matrix2.png)
+
+## Univariate Distributions Analysis
+With the univariate distribution analysis we are analyzing one variable at a time. Through this visualization we can observe  central tendency (mean, mode and median) and dispersion: range, variance, maximum, minimum, quartiles (including the interquartile range), and standard deviation.
+![univariate](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/univariate_plot.png)
+
+## Principal Component Analysis (PCA)
+**Principal Component Analysis** is a dimensionality-reduction method that is often used to reduce the dimensionality of large datasets, by transforming a large set of variables into a smaller one that still contains **most of the information** in the large set.
+
+Reducing the number of variables of a data set naturally comes at the expense of accuracy, but the trick in dimensionality reduction is to **trade a little accuracy for simplicity**. Because smaller data sets are easier to visualize and make analyzing data much easier for our **purpose to explore Fake and Real News**.
+
+**Fake News labeled as 0 and Real News as 1**
+![pca](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/pca.png)
+
+
+
 
 
 # 8. Models and Classifiers
