@@ -194,6 +194,7 @@ With the univariate distribution analysis we are analyzing one variable at a tim
 Reducing the number of variables of a data set naturally comes at the expense of accuracy, but the trick in dimensionality reduction is to **trade a little accuracy for simplicity**. Because smaller data sets are easier to visualize and make analyzing data much easier for our **purpose to explore Fake and Real News**.
 
 **Fake News labeled as 0 and Real News as 1**
+
 ![pca](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/pca.png)
 
 
