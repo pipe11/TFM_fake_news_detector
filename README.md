@@ -155,23 +155,71 @@ The content of fake and real news articles is substantially different. here is a
 
 Also, fake news articles need a **slightly lower education level to read**, use **fewer analytic words**, have **significantly more personal pronouns**, and use **fewer nouns** and **more adverbs**. These differences illustrate a strong divergence in both the complexity and the style of content. Fake news articles seem to be filled with **less substantial information** demonstrated by having a high amount of redundancy, **fewer analytic words**, and **fewer quotes**.
 
-With this analysis in mind we are selecting our features, which are going to be **features are language-independent**, for example, they do not consider specific terms from a language, in this case Spanish. Our objective is to extract features based on high-level structures. To accomplish this objective, we are going to extract features from 2 categories: **Complexity** and **Stylometric (Stylish)**.
+With this analysis in mind we are selecting our features, which are going to be **features are language-independent**, for example, they do not consider specific terms from a language, in this case Spanish. Our objective is to extract features based on high-level structures. To accomplish this objective, we are going to extract features from 2 categories: **Complexity** and **Stylometric (Stylish)**. Also we are considering **readability** and **perspicuity** scores in Spanish, considering **Fernández Huerta's readabilty score** and **Szigriszt Pazos perspicuity score**
 
 
-
+### Headline complexity features
 
 Feature | Description | Type |
---------|-------------|------|
+--------|-------------|------
+words_h | Number of words |Integer
+avg_words_sentence_h | Average words per sentence | Float
+avg_word_size_h | Average word size | Float
+avg_syllables_word_h | Average syllables per word | Float
+unique_words_h | Ratio of hapaxes or unique words that only appears once in a text | Float
+ttr_h | Type token ratio| Float
 
 
+### Article complexity features
+
+Feature | Description | Type |
+--------|-------------|------
+words | Number of words |Integer
+Sents | Number of sentences | Integer
 avg_words_sentence | Average words per sentence | Float
 avg_word_size | Average word size | Float
+avg_syllables_word | Average syllables per word | Float
+unique_words | Ratio of hapaxes or unique words that only appears once in a text | Float
+ttr | Type token ratio| Float
+huerta_score | Fernández Huerta's redability score (Reading comprehension of the text), spanish adaptation of the Flesch equation | Float
+szigriszt_score | Szigriszt Pazos perspicuity score (Legibility and clarity of the text), a modern spanish adaptation of the Flesch equation | Float
 
-avg_syllables_word: Average syllables per word
 
-unique_words: Hapaxes or unique words that only appears once in a text
+### Article stylometric features
 
-ttr: Type token ratio
+Feature | Description | Type |
+--------|-------------|------
+mltd | Measure of Textual Lexical Diversity, based on McCarthy and Jarvis (2010) | Float
+upper_case_ratio | Uppercase letters to all letters ratio |Float
+entityratio | Ratio of named Entities to the text size | Float
+quotes | Number of quotes | Float
+quotes_ratio | Ratio of quotes marks to text size | Float
+propn_ratio | Proper Noun tag frequency | Float
+noun_ratio | Noun tag frequency | Float
+pron_ratio | Pronoun tag frequency | Float
+adp_ratio | Adposition tag frequency | Float
+det_ratio | Determinant tag frequency | Float
+punct_ratio | Punctuation tag frequency | Float
+verb_ratio | Verb tag frequency | Float
+adv_ratio | Adverb tag frequency | Float
+sym_ratio | Symbol tag frequency | Float
+
+
+### Term Frequency-Inverse Document Frequency features (TFIDF)
+
+Also we most of our models consisted on extract another different type of features with **TFIDF** transformation. Our objective is to convert a the raw text from articles (Tried with headlines too) to a matrix of TF-IDF features:
+
+**TF-IDF** stands for ***term frequency-inverse document frequency***, and the tf-idf weight is a weight often used in information retrieval and text mining. This is a **statistical measure** used to evaluate **how important a word is to a document in our corpus**. The importance increases proportionally to the number of times a word appears in the document but is offset by the frequency of the word in the corpus. 
+
+**TF (Term Frequency)**
+Usually, the tf-idf weight is composed by two terms: the first computes the normalized **Term Frequency (TF)**, which is the *number of times a word appears in a document, divided by the total number of words* in that document.
+
+**TF(t)** = (Number of times term t appears in a document) / (Total number of terms in the document).
+
+**IDF (Inverse Document Frequency)**
+The second term is the **Inverse Document Frequency (IDF)**, computed as the *logarithm of the number of the documents in the corpus divided by the number of documents* where the specific term appears.
+
+**IDF(t)** = log_e(Total number of documents / Number of documents with term t in it).
 
 
 # 7. Data Exploration Analysis
