@@ -161,14 +161,14 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 
 ### Number of Fake News and Real News
 This corpus which contains **3.974 articles** in Spanish language, divided in **2046 Real News** and **1918 Fake News**.
-![articles_count]()
+![articles_count](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/articles_count.png)
 
 ### Article topics
 The articles in this corpus covers news from 9 different topics: **Science, Sport, Economy, Education, Entertainment, Politics, Health, Security, and Society**.
-![articles_topic]()
+![articles_topic](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/articles_topic.png)
 
 ## Fake and real news topics
-![articles_topic_hue]()
+![articles_topic_hue](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/articles_topic_hue.png)
 
 ## Boxplots with outliers
 Through boxplots we can analyze features distributions and check if there are outliers in our data. And check if there ar some text with irregularities or text not corresponding to properly written articles.
