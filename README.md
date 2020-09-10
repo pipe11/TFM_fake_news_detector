@@ -149,7 +149,29 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 
 # 6. Feature extraction
 
-------------------
+For a good classification performance we need to extract text features to distingish between Fake and Real News. We tried to capture grmmatical, lexical and stylish metrics and ratios from Fake and Real News, from its Headline and its article content we choosed wisely these metrics based on **[This Just In: Fake News Packs a Lot in Title](https://arxiv.org/pdf/1703.09398.pdf)** paper written by **Benjamin D. Horne and Sibel Adalı**.
+
+The content of fake and real news articles is substantially different. here is a significant difference in the content of real and fake news articles. **Real News** articles are **significantly longer** than fake news articles and that fake news articles use **fewer technical words**, **smaller words**, **fewer punctuation**, **fewer quotes**, and **more lexical redundancy**.
+
+Also, fake news articles need a **slightly lower education level to read**, use **fewer analytic words**, have **significantly more personal pronouns**, and use **fewer nouns** and **more adverbs**. These differences illustrate a strong divergence in both the complexity and the style of content. Fake news articles seem to be filled with **less substantial information** demonstrated by having a high amount of redundancy, **fewer analytic words**, and **fewer quotes**.
+
+With this analysis in mind we are selecting our features, which are going to be **features are language-independent**, for example, they do not consider specific terms from a language, in this case Spanish. Our objective is to extract features based on high-level structures. To accomplish this objective, we are going to extract features from 2 categories: **Complexity** and **Stylometric (Stylish)**.
+
+
+
+
+Feature | Description | Type |
+--------|-------------|------|
+
+
+avg_words_sentence | Average words per sentence | Float
+avg_word_size | Average word size | Float
+
+avg_syllables_word: Average syllables per word
+
+unique_words: Hapaxes or unique words that only appears once in a text
+
+ttr: Type token ratio
 
 
 # 7. Data Exploration Analysis
@@ -229,3 +251,6 @@ Posadas-Durán, J. P., Gómez-Adorno, H., Sidorov, G., & Escobar, J. J. M. (2019
 Aragón, M. E., Jarquín, H., Montes-y-Gómez, M., Escalante, H., Villaseñor-Pineda, L., Gómez-Adorno, H., Bel-Neguix, G., & Posadas-Durán, J. (2020). Overview of MEX-A3T at IberLEF 2020: Fake news and Aggressiveness Analysis case study in Mexican Spanish. In Notebook Papers of 2nd SEPLN Workshop on Iberian Languages Evaluation Forum (IberLEF), Preprint.
 
 [The spread of low-credibility content by social bots.](https://pubmed.ncbi.nlm.nih.gov/30459415/) Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kai-Cheng Yang, Alessandro Flammini, Filippo Menczer.
+
+[This Just In: Fake News Packs a Lot in Title, Uses Simpler, Repetitive Content in Text Body, More Similar to Satire than Real News Benjamin D. Horne and Sibel Adalı](https://arxiv.org/pdf/1703.09398.pdf)
+
