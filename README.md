@@ -118,7 +118,7 @@ spacy==2.3.2
 **Pipeline proposed for the project and the resulting web application**
 
 <p align="center">
-  <img src="https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/Project_pipeline.png">
+  <img src="https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/project_pipeline.png">
 </p>
 
 We propose the following pipeline for our news classification problem: **1. Data Acquisition, 2. Data Transformation, 3. Feature Extraction, 4. Classification Algorithms**.
@@ -158,7 +158,7 @@ On this step we use the proposed features to classify Fake and Real news. We pro
 
 Notebook: [Models and Classification Algorithms](https://github.com/pipe11/TFM_fake_news_detector/blob/master/models/11_final_notebook_models_explained.ipynb)
 
-### Predictos and App
+### Predictor and App
 
 The final step is to pack the model and develop an script and test it with actual news articles and launch predictions to classify Fake and Real News. We also make use of the Streamlit library to test an alpha demo of a web app. These steps can be replicated running the following notebook: [Predictos and streamlit](#https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/05_Final_notebook_predictor_explained.ipynb)
 
