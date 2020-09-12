@@ -14,7 +14,7 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 ## Table of contents
 
-[Introduction](#Introduction)
+[1. Introduction](#1.-Introduction)
 
 [2. Requirements](#2.-Requirements)
 
@@ -40,7 +40,7 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 
 
-## Introduction
+## 1. Introduction
 
 Initially I wanted to find a project and theme where I could apply the knowledge I have just acquired during the master and which would allow me to experience all phases of a Data Science project: **data adquisition**, **exploratory data analysis**, **data and feature engineering**, **multiple modeling** and finally create a **data product**. . The recent crisis caused by the COVID-19 pandemic, which we are still suffering from, increased even more the use of Online Social Media (OSM). Indeed, OSM has contributed to increase exponentially  the spreading of news, reducing barries and able to reach out to more people. But unfortunately social media is **very limited to check the credibility of news**, so the proliferation of Fake News increased as well, specifically due to the COVID-19 crisis. Nowadays news articles can be written and spread by anyone with access to Internet, so the spread of fake news and the massive spread of digital misinformation has been identified as a **major threat to democracies**.
 
