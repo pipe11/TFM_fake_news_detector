@@ -142,7 +142,7 @@ Once the final Corpus has been created, the next step is to process the text wit
 
 Also we considere the **TF-IDF transformation** to extract text vectors as features.
 
-The Feature Extraction process can be replicated on this notebook: [Feature Extraction](https://github.com/pipe11/TFM_fake_news_detector/blob/master/feature_extraction/06_Final_notebook_feature_extraction_explained.ipynb). 
+The Feature Extraction process can be replicated on this notebook: [Feature Extraction notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/feature_extraction/06_Final_notebook_feature_extraction_explained.ipynb). 
 To replicate this process, you also need to have installed the following specific libraries: **lexical-diversity** to extract relevant lexical features, **syltippy** which permits us to extract syllables from text in Spanish. **Spacy** pre-trained models in Spanish language, we can work locally with the **`es_core_news_lg` large model**.
 
 ### Classification Algorithms
@@ -156,11 +156,11 @@ On this step we use the proposed features to classify Fake and Real news. We pro
 - Random Forest
 - XGBoost
 
-Notebook: [Models and Classification Algorithms](https://github.com/pipe11/TFM_fake_news_detector/blob/master/models/11_final_notebook_models_explained.ipynb)
+If you want to replicate the classification or check out inside of the Algorithms, run this notebook: [Models and Classification Algorithms notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/models/11_final_notebook_models_explained.ipynb)
 
 ### Predictor and App
 
-The final step is to pack the model and develop an script and test it with actual news articles and launch predictions to classify Fake and Real News. We also make use of the Streamlit library to test an alpha demo of a web app. These steps can be replicated running the following notebook: [Predictos and streamlit](#https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/05_Final_notebook_predictor_explained.ipynb)
+The final step is to pack the model and develop an script and test it with actual news articles and launch predictions to classify Fake and Real News. We also make use of the Streamlit library to test an alpha demo of a web app. These steps can be replicated running the following notebook: [Predictors and streamlit notebook](#https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/05_Final_notebook_predictor_explained.ipynb)
 
 
 # 4. Datasets and corpora
@@ -202,6 +202,8 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 
 
 # 6. Feature extraction
+
+The Feature Extraction process can be replicated on this notebook: [Feature Extraction notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/feature_extraction/06_Final_notebook_feature_extraction_explained.ipynb).
 
 For a good classification performance we need to extract text features to distinguish between Fake and Real News. We tried to capture grammatical, lexical and stylish metrics and ratios from Fake and Real News, from its Headline and its article content. We hace choose wisely these metrics based on **[This Just In: Fake News Packs a Lot in Title](https://arxiv.org/pdf/1703.09398.pdf)** paper written by **Benjamin D. Horne and Sibel Adalı**.
 
@@ -276,7 +278,10 @@ The second term is the **Inverse Document Frequency (IDF)**, computed as the *lo
 **IDF(t)** = log_e(Total number of documents / Number of documents with term t in it).
 
 
-# 7. Data Exploration Analysis
+
+# 7. Exploratory Data Analysis
+
+All the content for this section was exported from the following notebook: [Exploratory Data Analysis notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/exploratory_data_analysis/02_Exploratory_data_analysis_final_explained.ipynb)
 
 ## Visualizations
 
@@ -323,11 +328,76 @@ Reducing the number of variables of a data set naturally comes at the expense of
 
 
 
-
-
 # 8. Classification Algorithms
 
-------------------
+If you want to replicate the classification or check out inside of the Algorithms, run this notebook: [Models and Classification Algorithms notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/models/11_final_notebook_models_explained.ipynb)
+
+Now that we have our 2 types of language-independent features: **Complexity** and **Stylometric** plus the features extracted after the **TF-IDF vectorization** of words, we need to unify these features in a feature vector, moreprecisely into a dense sparse **Matrix of features**. This is the only solution to unify the numeric features (Complexity and stylometric) and the features extracted from the TF-IDF vectorizer.
+
+For feature selection we are making **2 different focus**:
+
+1. Using only the features extracted on **The Feature Extraction process can be replicated on this notebook: [Feature Extraction notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/feature_extraction/06_Final_notebook_feature_extraction_explained.ipynb).**
+
+2. Using the features extracted + features extracted with TFIDF vectorization
+
+Then we applied multiple Machine Learning Classifiers Algorithms on these 2 different approachs, showing the following results.
+
+- Logistic regression as benchmark
+- K-nearest Neighbors
+- Support Vector Machine
+- Decision Tree
+- Random Forest
+- XGBoost
+
+Also as bonus: Passive Agressive Classifier.
+
+We are appliyong **GridSearchCV** in most of the models, its very useful and relevant its applications to find the best hyperparameters to optimize our models.
+
+
+### First approach: Model comparison
+We are going to evaluate the different models considering the following evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**.
+
+![first approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models1.png)
+
+**eXtreme Gradient Boosting (XGBOOST)** was the model with the best performance in all the metrics with only the extracted complexity and stylometric features. Looking at its **Confusion Matrix**, we can observe that is the best model for its predictive power on predicting positives and negatives at the same time:
+
+![confusion matrix](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost1.png)
+
+Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **MLTD**, **Average word size at the headline** and **Type Token Ratio of the article text**:
+
+![feature importance](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost1.png)
+
+
+### Second approach: Model comparison
+We are going to evaluate the different models considering the following evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**.
+
+![second approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models2.png)
+
+**eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving an accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
+
+![confusion matrix](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost2.png)
+
+Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **Type Token Ratio of the article text**, **Pro noun ratio of the article** and **'Numer' word**:
+
+![feature importance](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost2.png)
+
+
+### All models comparison
+We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
+
+![all models comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_all_models.png)
+
+Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independant features** + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distingish between Fake and Real News:
+
+Overall all these algorithms have better predictive power to **predict positives (Real News)**, this means **less recall and more precision** predicting positives, and more recall **predicting negatives (Fake News)**. But the XGBOOST model is more robust than the others models, especially when compared to Random Forest; in this case, **eXtreme Gradient Boosting** algorithm has **better predictive power for both Fake and Real news**.
+
+**Comparison of both XGBOOST Algorithms**
+
+Without **TF-IDF vectorization** and with **TF-IDF vectorization**:
+![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)
+
+
+Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and we will develop a .py script to **scrape newspapers articles** and launch predictions about whether their articles are Fake or Real News. Later on, that script will be productivized to **develop a Web Application**.
 
 
 # 9. App
