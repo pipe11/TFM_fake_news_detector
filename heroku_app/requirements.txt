@@ -1,5 +1,6 @@
 pandas==1.1.1
 numpy==1.19.1
+scipy==1.5.2
 streamlit==0.65.2
 nltk==3.5
 regex==2020.7.14
@@ -10,4 +11,5 @@ syltippy==1.0
 scikit-learn==0.23.1
 xgboost==1.1.1
 spacy==2.3.2
+langdetect==1.0.8
 https://github.com/explosion/spacy-models/releases/download/es_core_news_md-2.3.1/es_core_news_md-2.3.1.tar.gz#egg=es_core_news_md==2.3.1
