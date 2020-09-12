@@ -198,7 +198,15 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 
 # 5 Data transformation
 
-------------------
+This phase consists of **extracting quality data** from raw text, specifically Fake News and Real News from our data sources and finally create our final corpus for the next steps. On this process we are facing a **big file of 30 Gb** with **9,408,908 articles**, so we are using big data tools like chunksize for filtering and processing. To achieve our goal we will follow the following process:
+  1. Filter articles by credibility category
+  2. Detect language the language of the articles and filter them. 
+  3. Text cleaning and article selection
+  4. Create the final corpus
+
+The Data Transformation process can be replicated following the next notebooks: [FNC Big Data file](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/01_FNC_fake_news_big_data.ipynb), [Detecting and filtering by language](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/02_spanish_fake_news_filter.ipynb), [Extracting Real Spanish News](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/03_reliable_spanish_news.ipynb), [Final corpus](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb). Also you may have installed **langdetect** library, which allows us to detect the language of a given text, in our case Spanish.
+
+**Warning**: The news file is not available in this repository due to its big size. If you want to replicate everything, download it from here: https://github.com/several27/FakeNewsCorpus/releases/tag/v1.0
 
 
 # 6 Feature extraction
@@ -404,7 +412,7 @@ Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and w
 
 After some **streamlit configurations tests** wich can be revised on this notebook: [streamlit configurations](https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/06_Streamlit_configuration.ipynb) we decided to lauch our Web App hosting it at **[Heroku](https://dashboard.heroku.com/)**, it is a **platform as a service (PaaS)** that enables developers to build, run, and operate applications entirely in the cloud.
 
-We followed the [heroku's guide](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy our app with Python language:
+We have another **[The Github repository](https://github.com/pipe11/es_fake_news_detector)** for the **web app including its front-end** of this project using heroku service for web hosting. We followed the [heroku's guide](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy our app.
 
 **[1. Create a Heroku Account](https://signup.heroku.com/signup/dc)** which it allows you to syncronize your GitHub repository where you have stored your files.
 
@@ -451,7 +459,8 @@ enableCORS = false\n\
 - **Additional files**: If you want you can add as many images as you want for your **front-end**, if you are using **data or pickle models** you must store it on your repository too.
 
 **4. Deploy Heroku Server**: On my case I used the **Heroku CLI** and the following commands to create my app:
-- ```heroku create 'app_name' --region eu```
+- ```heroku create <<app name>> --region eu```
+- ```heroku git:remote -a <<app name>>```
 - ```git push heroku master```
 After this manual deploy, you can enable **automatic deploys** at the heroku control panel of your app. This enables automatic deployments every time you **update your repository** with new data and files.
 
