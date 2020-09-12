@@ -163,7 +163,7 @@ If you want to replicate the classification or check out inside of the Algorithm
 The final step is to pack the model and develop an script and test it with actual news articles and launch predictions to classify Fake and Real News. We also make use of the Streamlit library to test an alpha demo of a web app. These steps can be replicated running the following notebook: [Predictors and streamlit notebook](#https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/05_Final_notebook_predictor_explained.ipynb)
 
 
-# 4. Datasets and corpora
+# 4 Datasets and Corpora
 
 My main initial concerns were to find a dataset or **Corpus of Fake News in Spanish language** or explore ways to create one automatically with **web scraping techniques** or by manually checking the Fake and Real News, which was discarded because it would take a lot of time in tasks unrelated to Data Science. There is a big **deficiency of data**, Corpora and Text Data about fake news in Spanish language, fortunately I have been able to access to the **[Spanish Fake News Corpus](https://github.com/jpposadas/FakeNewsCorpusSpanish)** built by **Juan Pablo Durán-Posadas and its team**.
 
@@ -199,12 +199,31 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 # 5 Data transformation
 
 This phase consists of **extracting quality data** from raw text, specifically Fake News and Real News from our data sources and finally create our final corpus for the next steps. On this process we are facing a **big file of 30 Gb** with **9,408,908 articles**, so we are using big data tools like chunksize for filtering and processing. To achieve our goal we will follow the following process:
-  1. Filter articles by credibility category
-  2. Detect language the language of the articles and filter them. 
-  3. Text cleaning and article selection
-  4. Create the final corpus
 
-The Data Transformation process can be replicated following the next notebooks: [FNC Big Data file](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/01_FNC_fake_news_big_data.ipynb), [Detecting and filtering by language](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/02_spanish_fake_news_filter.ipynb), [Extracting Real Spanish News](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/03_reliable_spanish_news.ipynb), [Final corpus](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb). Also you may have installed **langdetect** library, which allows us to detect the language of a given text, in our case Spanish.
+### 5.1. Filter articles by credibility category
+On this step we are filtering with ```pandas``` the articles we want to extract per their credibility category, we are only taking: **Fake News, Satire News and Reliable News**. For this we used a technique learned from the Master witch **chunksize** that took a lot of time. This can be replicated and revised on the folllowing notebook: **[FNC Big Data file](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/01_FNC_fake_news_big_data.ipynb)**
+  
+The result of this operation was a csv file named **news_csv_filtered**. This file is note at the data folder due to its size, so we included its name at the **.gitignore list**.
+  
+### 5.2. Detect language the language of the articles
+On this phase we started looking for a methdology and a NLP tecnique or tool to **detect language from raw text**, so we can check if tere are articles in Spanish and later on filter them with an script. Finally to detect the language employed in the document, we used the **Python package ```langdetect```** which can detect all the languages ina given text. Also we used more arguments of this package to make a condition to filter only aritcles in Spanish, if a **second language is detected the script will drop it out**.
+ 
+For this operation, we used the same technique as in the last notebook, a **python script with chunksize** to handle the size of the input file. The resulting csv file is: **[news_csv_spanish](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data/news_csv_spanish.csv)**.
+ 
+### 5.3. Text cleaning and article selection
+After obtaining the articles in spanish, we checked and explored the resulting corpus (You can do it too with this **[Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**), and then we realized that all the articles categorized as **Reliable News**, **3.084 articles**, only contains articles with nutrition and health recomendations as it as could be ascertained from its source *nutritionfacts.org*. Also most of this articles are **extremely short** for our purposes.
+  
+So to **balance the final Corpus** we needed another dataset of spanish articles from reliable sources, if possible from spanish newspapers. Thats how we reached to the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**, **342.000 articles** in Spanish language. These news were **crawled on 2016** and it is a zip with 342.000 of JSON files. For these articles we need to **clean and preprocess the raw text**, only including the article information we want. For this we did a several article exploration to finde the **best reliable source**, the chosen was **Europa Press**. This domain contained not only articles from *europapress.com* but also from the most read newspapers on Spani: **El País, El Mundo, El Confidencial, El diario.es, 20minutos, etc...**.
+  
+We also needed to build an **script to classify the topics** for the reliable articles acording to its subdomain on its URL. All this process can be reviewed and replicated on this **[Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/03_reliable_spanish_news.ipynb)**
+    
+### 5.4. Create the final corpus
+Afte the creation of the final corpus, we needed to specify the topic of the **Fake News articles extracted**, this couldn't be done with the script built for the topic classification of the reliable articles. So we developed an **express Passive Agressive Classifier** for **multi classification topic on the 9 proposed topics** above. For this we used the **[Spanish FNC from Posadas](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data/corpus_spanish.csv)** as training data and for feature extraction we used the **TF-IDF Vectorization**. This multi classification algorithm achieved an **accuracy of 76%**.
+
+After these operations, we concated the articles from the 3 sources proposed at the **[Datasets and Corpora](4-Datasets-and-Corpora)** section: **[Spanish Fake News Corpus](https://github.com/jpposadas/FakeNewsCorpusSpanish)** built by **Juan Pablo Durán-Posadas and its team** + articles extracted from the **[Fake News Corpus (FNC) from several27](https://github.com/several27/FakeNewsCorpus)** + articles extracted from the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**.
+
+This process can be reviewed and replicated at this **[Notebook].(https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**<br>
+
 
 **Warning**: The news file is not available in this repository due to its big size. If you want to replicate everything, download it from here: https://github.com/several27/FakeNewsCorpus/releases/tag/v1.0
 
@@ -335,6 +354,22 @@ Reducing the number of variables of a data set naturally comes at the expense of
 ![pca](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/pca.png)
 
 
+### Summary
+
+- **Politics** is the topic with the most quantity of articles.
+- There are a lot of outliers at the number of **words** and **sentences**, but this is normal some articles are shorter or longer than others.
+- Analyzing the **headline** we can observe that Fake News Headlines are composed **with less words** but these **words are longer** than the Headline Real News.
+- Analyzing the **text article** we can observe on its complexity features, we can observe that Fake News have more **Type Token Ratio** and **Unique words ratio** than the Real News. Also, Real News have **more words, sentences and more average of words per sentence** than Fake News, this is normal because Fake News tend to be short and with less word on its text.
+- Analyzing the **stylometric features of the text articles**, we can see substantial differences between Fake News and Real News on its ratios: More **upper case letters** and **entities mentioned** for Real News. Also more **quotes** and **quotes ratio** for Real News compared to Fake News.
+- Fake News tend to have more **nouns**, **pronouns**, **verbs** and **adverbs**.
+- Real News tend to have more **proper nouns**, **adpositions** and more **punctuations**.
+- For the case of **determinants** Fake News and Real News are tied.
+- But for the **symbols ratio** we can observe that Fake News don't follow a **Normal distribution** . On the other hand, in the case of real news, its distribution is "more" standardized.
+- **entity ratio**, **proper noun ratio**, **uppter case ratio** have strong correlation.
+- **szigriszt score and huerta score** have a strong negative correlation with **average number of words per sentence**.
+- With the **PCA Analysis** we can observe that **Real News** are **more concentrated** than **Fake News** which are **more dispersed** on their respective features.
+
+
 
 # 8 Classification Algorithms
 
@@ -434,6 +469,12 @@ scikit-learn==0.23.1
 xgboost==1.1.1
 spacy==2.3.2
 https://github.com/explosion/spacy-models/releases/download/es_core_news_md-2.3.1/es_core_news_md-2.3.1.tar.gz#egg=es_core_news_md==2.3.1
+```
+
+-**NLTK.text**, In our case, as we are using some modules of the **NLTK package**, we need another .txt file for these packages, e.g. on our case:
+```
+stopwords
+punkt
 ```
 
 - **Procfile**, a text file in the root directory of your application, to explicitly declare what command should be executed to start your app, e.g. on my case:
