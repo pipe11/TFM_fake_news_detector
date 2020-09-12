@@ -14,29 +14,29 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 ## Table of contents
 
-**[1 Introduction](#1-Introduction)**
+**[1. Introduction](#1-Introduction)**
 
-**[2 Requirements](#2-Requirements)**
+**[2. Requirements](#2-Requirements)**
 
-**[3 Materials and methodology](#3-Materials-and-methodology)**
+**[3. Materials and methodology](#3-Materials-and-methodology)**
 
-**[4 Datasets and Corpora](#4-Datasets-and-Corpora)**
+**[4. Datasets and Corpora](#4-Datasets-and-Corpora)**
 
-**[5 Data transformation](#5-Data-transformation)**
+**[5. Data transformation](#5-Data-transformation)**
 
-**[6 Feature extraction](#6-Feature-extraction)**
+**[6. Feature extraction](#6-Feature-extraction)**
 
-**[7 Data Exploration Analysis](#7-Data-Exploration-Analysis)**
+**[7. Data Exploration Analysis](#7-Data-Exploration-Analysis)**
 
-**[8 Classification Algorithms](#8-Classification-Algorithms)**
+**[8. Classification Algorithms](#8-Classification-Algorithms)**
 
-**[9 App](#9-App)**
+**[9. App](#9-App)**
 
 **[10. Conclusions](#10-Conclusions)**
 
-**[11 Future work](#11-Future-work)**
+**[11. Future work](#11-Future-work)**
 
-**[12 References](#12-References)**
+**[12. References](#12-References)**
 
 
 
@@ -525,7 +525,15 @@ The application will also show you relevant information scraped from the newspap
 
 # 10 Conclusions
 
-------------------
+Nowadays, it is very necessary to identify the missleadings and harmfull articles due to the increase of Online Social Media consumption, which provides a **high diffusion of unregulated and unverified content**. The The ever-increasing of spreading speed of Fake News **requires an automated method** to detect and distinguish between Fake and Real news.
+
+This work couldn't be accomplished with the **the three sources of data** already mentioned, but it was very complicated to create an **extensive corpus**, with **quality data**, of news in Spanish and many of them from Spain, as we did not have access to the databases of certified *fact-checkers* in Spain. This task was done to the best of my ability with the **resources and knowledge at my disposal**, although it could possibly be improved by others.
+
+The **Feature extraction** proposed for **language-independent** features, Complexity and Stylometric features, did a great job with the classification task. Also the TF-IDF Transformation for the raw text created features which allowed us to **refine the model** to achieve a record of **95% of accuracy**. These models can improve a lot their predictive power with better data, but there is no doubt that these algorithms **can perform the traditional task of a journalism article verification in a more effective and efficient way**. The NLP future advances will demonstrate that these Algorithm and technology **have arrived to stay**.
+
+Throughout the life of this project, and with the proposed project pipeline, we have been able to apply practically all the tasks and **professional functions of a Data Scientist**: **Data acquisition**, **Data engineering and Data transformation, **Feature Engineering**, **Machine Learning modelling** and finally creating **Data Products.
+
+I want to **thank all the teachers** who have taught us throughout the master, that even in an exceptional situation, at least on my case, I have been able to learn a lot of knowlodge, programming skills, and data techniques throughout this 19th edition of the KSchool Data Science Master.
 
 
 # 11 Future work
@@ -545,9 +553,9 @@ Also we are open to consider another product result of these models: **An extens
 
 [European Comission on Fake News](https://ec.europa.eu/knowledge4policy/foresight/topic/increasing-influence-new-governing-systems/fake-news-disinformation-threatens-democracy_en)
 
-Posadas-Durán, J. P., Gómez-Adorno, H., Sidorov, G., & Escobar, J. J. M. (2019). Detection of fake news in a new corpus for the Spanish language. Journal of Intelligent & Fuzzy Systems, 36(5), 4869-4876.
+[Posadas-Durán, J. P., Gómez-Adorno, H., Sidorov, G., & Escobar, J. J. M. (2019). Detection of fake news in a new corpus for the Spanish language. Journal of Intelligent & Fuzzy Systems, 36(5), 4869-4876.](https://github.com/jpposadas/FakeNewsCorpusSpanish)
 
-Aragón, M. E., Jarquín, H., Montes-y-Gómez, M., Escalante, H., Villaseñor-Pineda, L., Gómez-Adorno, H., Bel-Neguix, G., & Posadas-Durán, J. (2020). Overview of MEX-A3T at IberLEF 2020: Fake news and Aggressiveness Analysis case study in Mexican Spanish. In Notebook Papers of 2nd SEPLN Workshop on Iberian Languages Evaluation Forum (IberLEF), Preprint.
+Aragón, M. E., Jarquín, H., Montes-y-Gómez, M., Escalante, H., Villaseñor-Pineda, L., Gómez-Adorno, H., Bel-Neguix, G., & Posadas-Durán, J. (2020). Overview of MEX-A3T at IberLEF 2020: [Fake news and Aggressiveness Analysis case study in Mexican Spanish. In Notebook Papers of 2nd SEPLN Workshop on Iberian Languages Evaluation Forum (IberLEF), Preprint.](https://sites.google.com/view/mex-a3t/)
 
 [The spread of low-credibility content by social bots.](https://pubmed.ncbi.nlm.nih.gov/30459415/) Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kai-Cheng Yang, Alessandro Flammini, Filippo Menczer.
 
@@ -560,6 +568,10 @@ Aragón, M. E., Jarquín, H., Montes-y-Gómez, M., Escalante, H., Villaseñor-Pi
 [WebHouse Dataset spanish news](https://webhose.io/free-datasets/spanish-news-articles/)
 
 [Evaluation metrics](https://www.kdnuggets.com/2020/05/model-evaluation-metrics-machine-learning.html)
+
+[Principal Component Analysis in Python](https://www.datacamp.com/community/tutorials/principal-component-analysis-in-python)
+
+[TF-IDF Vectorizer](https://kavita-ganesan.com/tfidftransformer-tfidfvectorizer-usage-differences/#.X10n0mgzaUk)
 
 [XGBOOST tuning guide](https://www.kaggle.com/prashant111/a-guide-on-xgboost-hyperparameters-tuning)
 
