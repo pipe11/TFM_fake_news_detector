@@ -28,7 +28,7 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 [7. Data Exploration Analysis](#7.-Data-Exploration-Analysis)
 
-[8. Models and Classifiers](#8.-Models-and-Classifiers)
+[8. Classification Algorithms](#8.-Classification-Algorithms)
 
 [9. App](#9.-App)
 
@@ -147,7 +147,7 @@ To replicate this process, you also need to have installed the following specifi
 
 ### Classification Algorithms
 
-On this step we use the proposed features to classify Fake and Real news. We propose the following classification algorithms:
+On this [Classification Algorithms](#8.-Classification-Algorithms) section we use the proposed features to classify Fake and Real news. We propose the following classification algorithms:
 
 - Logistic regression as benchmark
 - K-nearest Neighbors
@@ -361,11 +361,11 @@ We are going to evaluate the different models considering the following evaluati
 
 **eXtreme Gradient Boosting (XGBOOST)** was the model with the best performance in all the metrics with only the extracted complexity and stylometric features. Looking at its **Confusion Matrix**, we can observe that is the best model for its predictive power on predicting positives and negatives at the same time:
 
-![confusion matrix](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost1.png)
+![confusion matrix xgboost1](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost1.png)
 
 Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **MLTD**, **Average word size at the headline** and **Type Token Ratio of the article text**:
 
-![feature importance](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost1.png)
+![feature importance xgboost1](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost1.png
 
 
 ### Second approach: Model comparison
@@ -375,11 +375,11 @@ We are going to evaluate the different models considering the following evaluati
 
 **eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving an accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
 
-![confusion matrix](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost2.png)
+![confusion matrix xgboost2](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost2.png)
 
 Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **Type Token Ratio of the article text**, **Pro noun ratio of the article** and **'Numer' word**:
 
-![feature importance](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost2.png)
+![feature importance xgboost2](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost2.png)
 
 
 ### All models comparison
@@ -394,6 +394,7 @@ Overall all these algorithms have better predictive power to **predict positives
 **Comparison of both XGBOOST Algorithms**
 
 Without **TF-IDF vectorization** and with **TF-IDF vectorization**:
+
 ![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)
 
 
