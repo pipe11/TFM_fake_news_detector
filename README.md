@@ -20,7 +20,7 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 **[3 Materials and methodology](#3-Materials-and-methodology)**
 
-**[4 Datasets and corporas](#4-Datasets-and-corporas)**
+**[4 Datasets and Corpora](#4-Datasets-and-Corpora)**
 
 **[5 Data transformation](#5-Data-transformation)**
 
@@ -201,26 +201,26 @@ Identifier to each instance. | Category of the news (True or Fake). | Topic rela
 This phase consists of **extracting quality data** from raw text, specifically Fake News and Real News from our data sources and finally create our final corpus for the next steps. On this process we are facing a **big file of 30 Gb** with **9,408,908 articles**, so we are using big data tools like chunksize for filtering and processing. To achieve our goal we will follow the following process:
 
 ### 5.1. Filter articles by credibility category
-On this step we are filtering with ```pandas``` the articles we want to extract per their credibility category, we are only taking: **Fake News, Satire News and Reliable News**. For this we used a technique learned from the Master witch **chunksize** that took a lot of time. This can be replicated and revised on the folllowing notebook: **[FNC Big Data file](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/01_FNC_fake_news_big_data.ipynb)**
+On this step we filter with ```pandas``` the articles we want to extract per their credibility category, we only take: **Fake News, Satire News and Reliable News**. For this we used a technique learned in the Master; i.e.-**chunksize** which took a lot of time. This can be replicated and revised on the following notebook: **[FNC Big Data file](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/01_FNC_fake_news_big_data.ipynb)**
   
-The result of this operation was a csv file named **news_csv_filtered**. This file is note at the data folder due to its size, so we included its name at the **.gitignore list**.
+The result of this operation was a CSV file named **news_csv_filtered**. This file is note at the data folder due to its size, so we included its name at the **.gitignore list**.
   
 ### 5.2. Detect language the language of the articles
-On this phase we started looking for a methdology and a NLP tecnique or tool to **detect language from raw text**, so we can check if tere are articles in Spanish and later on filter them with an script. Finally to detect the language employed in the document, we used the **Python package ```langdetect```** which can detect all the languages ina given text. Also we used more arguments of this package to make a condition to filter only aritcles in Spanish, if a **second language is detected the script will drop it out**.
+On this phase we started looking for a methodology and a NLP technique or tool to **detect language from raw text**, so we can check if there are articles in Spanish, and later on filter them with a script. Finally to detect the language employed in the document, we used the **Python package ```langdetect```** which can detect all the languages in a given text. Also we used more arguments of this package to make a condition to filter only articles in Spanish. If a **second language is detected the script will drop it out**.
  
 For this operation, we used the same technique as in the last notebook, a **python script with chunksize** to handle the size of the input file. The resulting csv file is: **[news_csv_spanish](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data/news_csv_spanish.csv)**.
  
 ### 5.3. Text cleaning and article selection
-After obtaining the articles in spanish, we checked and explored the resulting corpus (You can do it too with this **[Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**), and then we realized that all the articles categorized as **Reliable News**, **3.084 articles**, only contains articles with nutrition and health recomendations as it as could be ascertained from its source *nutritionfacts.org*. Also most of this articles are **extremely short** for our purposes.
+After obtaining the articles in Spanish language, we checked and explored the resulting Corpus (you can do so with this **[Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**), and then we realized that all the articles categorized as **Reliable News**, **3.084 articles**, only contains articles with nutrition and health recommendations as it as could be ascertained from its source *nutritionfacts.org*. Also most of this articles are **extremely short** for our purposes.
   
-So to **balance the final Corpus** we needed another dataset of spanish articles from reliable sources, if possible from spanish newspapers. Thats how we reached to the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**, **342.000 articles** in Spanish language. These news were **crawled on 2016** and it is a zip with 342.000 of JSON files. For these articles we need to **clean and preprocess the raw text**, only including the article information we want. For this we did a several article exploration to finde the **best reliable source**, the chosen was **Europa Press**. This domain contained not only articles from *europapress.com* but also from the most read newspapers on Spani: **El País, El Mundo, El Confidencial, El diario.es, 20minutos, etc...**.
+So to **balance the final Corpus** we needed another dataset of Spanish articles from reliable sources and, if possible, from Spanish newspapers. Thats how we reached to the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**, **342.000 articles** in Spanish language. These news were **crawled on 2016** and it is a zip with 342.000 of JSON files. For these articles we needed to **clean and preprocess the raw text**, only including the article information we want. For this we did a several article exploration to find the **best reliable source**, the chosen was **Europa Press**. This domain contained not only articles from *europapress.com* but also from the most read newspapers in Spain: **El País, El Mundo, El Confidencial, El diario.es, 20minutos, etc...**.
   
 We also needed to build an **script to classify the topics** for the reliable articles acording to its subdomain on its URL. All this process can be reviewed and replicated on this **[Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/03_reliable_spanish_news.ipynb)**
     
 ### 5.4. Create the final corpus
-Afte the creation of the final corpus, we needed to specify the topic of the **Fake News articles extracted**, this couldn't be done with the script built for the topic classification of the reliable articles. So we developed an **express Passive Agressive Classifier** for **multi classification topic on the 9 proposed topics** above. For this we used the **[Spanish FNC from Posadas](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data/corpus_spanish.csv)** as training data and for feature extraction we used the **TF-IDF Vectorization**. This multi classification algorithm achieved an **accuracy of 76%**.
+After the creation of the final Corpus, we needed to specify the topic of the **Fake News articles extracted**, this couldn't be done with the script built for the topic classification of the reliable articles. So we developed an **express Passive Aggressive Classifier** for **multi classification topic on the 9 proposed topics** above. For this we used the **[Spanish FNC from Posadas](https://github.com/pipe11/TFM_fake_news_detector/blob/master/data/corpus_spanish.csv)** as training data and for feature extraction we used the **TF-IDF Vectorization**. This multi classification algorithm achieved an **accuracy of 76%**.
 
-After these operations, we concated the articles from the 3 sources proposed at the **[Datasets and Corpora](4-Datasets-and-Corpora)** section: **[Spanish Fake News Corpus](https://github.com/jpposadas/FakeNewsCorpusSpanish)** built by **Juan Pablo Durán-Posadas and its team** + articles extracted from the **[Fake News Corpus (FNC) from several27](https://github.com/several27/FakeNewsCorpus)** + articles extracted from the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**.
+After these operations, we concatenated the articles from the 3 sources proposed at the **[Datasets and Corpora](4-Datasets-and-Corpora)** section: **[Spanish Fake News Corpus](https://github.com/jpposadas/FakeNewsCorpusSpanish)** built by **Juan Pablo Durán-Posadas and its team** + articles extracted from the **[Fake News Corpus (FNC) from several27](https://github.com/several27/FakeNewsCorpus)** + articles extracted from the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**.
 
 This process can be reviewed and replicated at this **[Notebook].(https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**<br>
 
@@ -306,9 +306,9 @@ The second term is the **Inverse Document Frequency (IDF)**, computed as the *lo
 
 
 
-# 7 Exploratory Data Analysis
+# 7 Data Exploration Analysis
 
-All the content for this section was exported from the following notebook: [Exploratory Data Analysis notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/exploratory_data_analysis/02_Exploratory_data_analysis_final_explained.ipynb)
+All the content for this section was exported from the following notebook: [Exploratory Data Analysis Notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/exploratory_data_analysis/02_Exploratory_data_analysis_final_explained.ipynb)
 
 ## Visualizations
 
@@ -383,18 +383,18 @@ For feature selection we are making **2 different focus**:
 
 2. Using the features extracted + features extracted with TFIDF vectorization
 
-Then we applied multiple Machine Learning Classifiers Algorithms on these 2 different approachs, showing the following results.
+Then we applied multiple Machine Learning Classifiers Algorithms on these 2 different approaches, showing the following results.
 
-- Logistic regression as benchmark
-- K-nearest Neighbors
-- Support Vector Machine
-- Decision Tree
-- Random Forest
-- XGBoost
+- **Logistic regression as benchmark**
+- **K-nearest Neighbors**
+- **Support Vector Machine**
+- **Decision Tree**
+- **Random Forest**
+- **XGBoost**
 
-Also as bonus: Passive Agressive Classifier.
+Also as bonus: **Passive Aggressive Classifier** which was used at the **[Data transformation](#5-Data-transformation)** section for topic multi-classification.
 
-We are appliyong **GridSearchCV** in most of the models, its very useful and relevant its applications to find the best hyperparameters to optimize our models.
+We applied **GridSearchCV** in most of the models, its very useful and relevant its applications to find the best hyperparameters to optimize our models.
 
 
 ### First approach: Model comparison
@@ -426,7 +426,7 @@ Evaluating the feature importance of the **XGBOOST**, we observe that the **top 
 
 
 ### All models comparison
-Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independant features** + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distingish between Fake and Real News. We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
+Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independent** features + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distinguish between Fake and Real News. We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
 
 &nbsp;&nbsp;&nbsp;&nbsp;![all models comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_all_models.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -445,15 +445,15 @@ Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and w
 
 # 9 App
 
-After some **streamlit configurations tests** wich can be revised on this notebook: [streamlit configurations](https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/06_Streamlit_configuration.ipynb) we decided to lauch our Web App hosting it at **[Heroku](https://dashboard.heroku.com/)**, it is a **platform as a service (PaaS)** that enables developers to build, run, and operate applications entirely in the cloud.
+After some **Streamlit configurations tests** wich can be revised on this notebook: [streamlit configurations](https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/06_Streamlit_configuration.ipynb) we decided to lauch our Web App hosting it at **[Heroku](https://dashboard.heroku.com/)**, it is a **platform as a service (PaaS)** that enables developers to build, run, and operate applications entirely in the cloud.
 
-We have another **[The Github repository](https://github.com/pipe11/es_fake_news_detector)** for the **web app including its front-end** of this project using heroku service for web hosting. We followed the [heroku's guide](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy our app.
+We have another **[The Github repository](https://github.com/pipe11/es_fake_news_detector)** for the **web app including its front-end** of this project using Heroku service for web hosting. We followed the [heroku's guide](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy our app.
 
 **[1. Create a Heroku Account](https://signup.heroku.com/signup/dc)** which it allows you to syncronize your GitHub repository where you have stored your files.
 
-**[2. Install Heroku CLI on Git](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)**. This step is note necessary but I recommend the usage of the Heorku CLI for deploy your server properly and check if there are errors.
+**[2. Install Heroku CLI on Git](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)**. This step is note necessary but I recommend the usage of the Heroku CLI for deploy your server properly and check if there are errors.
 
-**3. Files needed on your repor**: You must have all the following files stored on the repository you are syncronizing with Heroku:
+**3. Files needed on your repository**: You must have all the following files stored on the repository you are synchronizing with Heroku:
 - **Requirements.txt** with all the **packages needed** and their **versions**, this file lists the app dependencies to install all the packages on the server, e.g on my case:
 ```
 pandas==1.1.1
@@ -503,9 +503,25 @@ enableCORS = false\n\
 - ```heroku create <<app name>> --region eu```
 - ```heroku git:remote -a <<app name>>```
 - ```git push heroku master```
-After this manual deploy, you can enable **automatic deploys** at the heroku control panel of your app. This enables automatic deployments every time you **update your repository** with new data and files.
+After this manual deploy, you can enable **automatic deploys** at the Heroku control panel of your app. This enables automatic deployments every time you **update your repository** with new data and files.
 
-The final result of this guide and my whole project is the following app: **[es-fake-news-detector]**
+## Front-end Web Application
+
+The final result of this guide and my whole project is the following app: **[es-fake-news-detector](https://es-fake-news-detector.herokuapp.com/)**. To use it just insert or **paste a URL link** and press **enter** or click the **button**. This application **can detect the language** from the input article so if the languages is different than spanish it will display a surprising error screen :).
+
+<p align="center">
+  <img src="https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/front_end_app1.png">
+</p>
+
+The application will also show you relevant information scraped from the newspaper, such as the **author**, **newspaper name**, **headline text**, **image of the article**, and the **text article**. The classification can show 3 different of news articles options:
+
+- The article is a **Real New** and its probability of being Real
+- The article is **misleading** and its probability of being Real
+- The article is a **Fake New** and its probability of being Fake
+
+<p align="center">
+  <img src="https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/front_end_app2.png">
+</p>
 
 # 10 Conclusions
 
@@ -514,7 +530,15 @@ The final result of this guide and my whole project is the following app: **[es-
 
 # 11 Future work
 
-------------------
+For future work it can be relevant to classify between **Fake News, **Real News** and **Satire News**, this is the optimal and ultimate article classification for this field, as it allows us to detect **harmfull articles**. But this requires a Dataset and Corpus of articles in Spanish with quality data, and **NOT MIXING** Fake News with Satire News.
+
+For the classification problems of Fake News in Spanish it is necessary to have a corpus and datasets **with quality data** and if possible **articles from Spain**. It is also important to have a significant amount of articles.The amount from which the models of Machine Learning are more optimal would be around **2000-5000 articles**. For multi classification purposes the amount of data would imply a proportional increase in training and testing data.
+
+For this project we wanted to explore the possibility of to move our data and features into the **Deep Learning** field for the purpose of creating **Neural Networks** for classification between Fake News and Real News. Also we want to explore the possibility to apply **Ensemble Learning** proposing different pipelines for proposing different pipelines for each set of feautures, as done at the by the best kernels at the **[FNC Challenge](http://www.fakenewschallenge.org/)**.
+
+With the results we want to productivize the results into an app with more features, like **language translation**, **stats from the newspaper**, **better article scrpaing techniques**, ((*scrape premium articles*)); and also explore the possibility to connect the predicted data to our training data with a methodology that can permit our models to **keep improving and refining with the input data**. 
+
+Also we are open to consider another product result of these models: **An extension for browsers.**
 
 
 # 12 References
