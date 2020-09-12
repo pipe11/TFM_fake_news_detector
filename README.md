@@ -365,7 +365,7 @@ We are going to evaluate the different models considering the following evaluati
 
 Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **MLTD**, **Average word size at the headline** and **Type Token Ratio of the article text**:
 
-![feature importance xgboost1](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost1.png
+![feature importance xgboost1](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost1.png)
 
 
 ### Second approach: Model comparison
@@ -383,19 +383,18 @@ Evaluating the feature importance of the **XGBOOST**, we observe that the **top 
 
 
 ### All models comparison
-We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
+Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independant features** + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distingish between Fake and Real News. We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
 
 ![all models comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_all_models.png)
 
-Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independant features** + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distingish between Fake and Real News:
-
-Overall all these algorithms have better predictive power to **predict positives (Real News)**, this means **less recall and more precision** predicting positives, and more recall **predicting negatives (Fake News)**. But the XGBOOST model is more robust than the others models, especially when compared to Random Forest; in this case, **eXtreme Gradient Boosting** algorithm has **better predictive power for both Fake and Real news**.
-
 **Comparison of both XGBOOST Algorithms**
-
 Without **TF-IDF vectorization** and with **TF-IDF vectorization**:
 
+
 ![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)
+
+
+Overall all these algorithms have better predictive power to **predict positives (Real News)**, this means **less recall and more precision** predicting positives, and more recall **predicting negatives (Fake News)**. But the XGBOOST model is more robust than the others models, especially when compared to Random Forest; in this case, **eXtreme Gradient Boosting** algorithm has **better predictive power for both Fake and Real news**.
 
 
 Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and we will develop a .py script to **scrape newspapers articles** and launch predictions about whether their articles are Fake or Real News. Later on, that script will be productivized to **develop a Web Application**.
@@ -418,6 +417,7 @@ Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and w
 
 # 12. References
 
+[European Comission on Fake News](https://ec.europa.eu/knowledge4policy/foresight/topic/increasing-influence-new-governing-systems/fake-news-disinformation-threatens-democracy_en)
 
 Posadas-Durán, J. P., Gómez-Adorno, H., Sidorov, G., & Escobar, J. J. M. (2019). Detection of fake news in a new corpus for the Spanish language. Journal of Intelligent & Fuzzy Systems, 36(5), 4869-4876.
 
@@ -426,4 +426,14 @@ Aragón, M. E., Jarquín, H., Montes-y-Gómez, M., Escalante, H., Villaseñor-Pi
 [The spread of low-credibility content by social bots.](https://pubmed.ncbi.nlm.nih.gov/30459415/) Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kai-Cheng Yang, Alessandro Flammini, Filippo Menczer.
 
 [This Just In: Fake News Packs a Lot in Title, Uses Simpler, Repetitive Content in Text Body, More Similar to Satire than Real News Benjamin D. Horne and Sibel Adalı](https://arxiv.org/pdf/1703.09398.pdf)
+
+[Awesome Linguistics Resources for Spanish](https://github.com/dav009/awesome-spanish-nlp)
+
+[Papers with code, text classification](https://paperswithcode.com/area/natural-language-processing/text-classification)
+
+[WebHouse Dataset spanish news](https://webhose.io/free-datasets/spanish-news-articles/)
+
+[Evaluation metrics](https://www.kdnuggets.com/2020/05/model-evaluation-metrics-machine-learning.html)
+
+[XGBOOST tuning guide](https://www.kaggle.com/prashant111/a-guide-on-xgboost-hyperparameters-tuning)
 
