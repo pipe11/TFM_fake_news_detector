@@ -14,33 +14,33 @@ This project resulted on the launch of a **web app** as a live demo. **[¡Try it
 
 ## Table of contents
 
-[1. Introduction](#1.-Introduction)
+**[1 Introduction](#1-Introduction)**
 
-[2. Requirements](#2.-Requirements)
+**[2 Requirements](#2-Requirements)**
 
-[3. Materials and methodology](#3.-Materials-and-methodology)
+**[3 Materials and methodology](#3-Materials-and-methodology)**
 
-[4. Datasets and corporas](#4.-Datasets-and-corporas)
+**[4 Datasets and corporas](#4-Datasets-and-corporas)**
 
-[5. Data transformation](#5.-Data-transformation)
+**[5 Data transformation](#5-Data-transformation)**
 
-[6. Feature extraction](#6.-Feature-extraction)
+**[6 Feature extraction](#6-Feature-extraction)**
 
-[7. Data Exploration Analysis](#7.-Data-Exploration-Analysis)
+**[7 Data Exploration Analysis](#7-Data-Exploration-Analysis)**
 
-[8. Classification Algorithms](#8.-Classification-Algorithms)
+**[8 Classification Algorithms](#8-Classification-Algorithms)**
 
-[9. App](#9.-App)
+**[9 App](#9-App)**
 
-[10. Conclusions](#10.-Conclusions)
+**[10. Conclusions](#10-Conclusions)**
 
-[11. Future work](#11.-Future-work)
+**[11 Future work](#11-Future-work)**
 
-[12. References](#12.-References)
+**[12 References](#12-References)**
 
 
 
-## 1. Introduction
+## 1 Introduction
 
 Initially I wanted to find a project and theme where I could apply the knowledge I have just acquired during the master and which would allow me to experience all phases of a Data Science project: **data adquisition**, **exploratory data analysis**, **data and feature engineering**, **multiple modeling** and finally create a **data product**. . The recent crisis caused by the COVID-19 pandemic, which we are still suffering from, increased even more the use of Online Social Media (OSM). Indeed, OSM has contributed to increase exponentially  the spreading of news, reducing barries and able to reach out to more people. But unfortunately social media is **very limited to check the credibility of news**, so the proliferation of Fake News increased as well, specifically due to the COVID-19 crisis. Nowadays news articles can be written and spread by anyone with access to Internet, so the spread of fake news and the massive spread of digital misinformation has been identified as a **major threat to democracies**.
 
@@ -57,7 +57,7 @@ There are few advances in the fake news detection field in the Spanish language,
 **¿Can we make an efficient tool but also effective to detect between Fake and Real news?**
 
 
-# 2. Requirements
+# 2 Requirements
 
 On this project we are using the work environment proposed throughout this Master, so we'll keep using the **Ubuntu Distribution** for Aindows: **Windows Subsystem Linux (WSL)**, and more specifically we will use Anaconda distribution with **Python 3.6.9**. 
 
@@ -113,7 +113,7 @@ spacy==2.3.2
 ```
 
 
-# 3. Materials and methodology
+# 3 Materials and methodology
 
 **Pipeline proposed for the project and the resulting web application**
 
@@ -124,7 +124,7 @@ spacy==2.3.2
 We propose the following pipeline for our news classification problem: **1. Data Acquisition, 2. Data Transformation, 3. Feature Extraction, 4. Classification Algorithms**.
 
 ### Data Acquisition
-The methodology followed in this step consisted of an extensive search of datasets and corpus of fake news in Spanish, contact with different **certified fact checkers** in Spain and several attempts of **web scraping techniques** on fake news already verified. Finally, three sources of data were obtained, which will be explained in the following section **[Datasets and corpora](#4.-Datasets-and-corpora)**.
+The methodology followed in this step consisted of an extensive search of datasets and corpus of fake news in Spanish, contact with different **certified fact checkers** in Spain and several attempts of **web scraping techniques** on fake news already verified. Finally, three sources of data were obtained, which will be explained in the following section **[Datasets and corpora](#4-Datasets-and-corpora)**.
 
 ### Data Transformation
 This phase consists of **extracting quality data** from raw text, specifically Fake News and Real News from our data sources and finally create our final corpus for the next steps. On this process we are facing a **big file of 30 Gb** with **9,408,908 articles**, so we are using big data tools like chunksize for filtering and processing. To achieve our goal we will follow the following process:
@@ -138,7 +138,7 @@ The Data Transformation process can be replicated following the next notebooks: 
 **Warning**: The news file is not available in this repository due to its big size. If you want to replicate everything, download it from here: https://github.com/several27/FakeNewsCorpus/releases/tag/v1.0
 
 ### Feature Extraction
-Once the final Corpus has been created, the next step is to process the text with **NLP techniques**, applying the **Spacy library** to extract valuable information from the raw text. The select features in this project are **language-independent**, for example, they do not consider specific terms from a language, in this case Spanish. To accomplish this objective, we are going to extract features from 2 categories: **Complexity** and **Stylometric (Stylish)**. This process will be explained at the  **[Feature Extraction](#6.-Feature-extraction)** section.
+Once the final Corpus has been created, the next step is to process the text with **NLP techniques**, applying the **Spacy library** to extract valuable information from the raw text. The select features in this project are **language-independent**, for example, they do not consider specific terms from a language, in this case Spanish. To accomplish this objective, we are going to extract features from 2 categories: **Complexity** and **Stylometric (Stylish)**. This process will be explained at the  **[Feature Extraction](#6-Feature-extraction)** section.
 
 Also we considere the **TF-IDF transformation** to extract text vectors as features.
 
@@ -169,7 +169,7 @@ My main initial concerns were to find a dataset or **Corpus of Fake News in Span
 
 Our first models were developed with this corpus and it contains **971 news** divided into **491 true news** and **480 fake news**. The corpus covers news from 9 different topics: **Science, Sport, Economy, Education, Entertainment, Politics, Health, Security, and Society**.
 
-We observed in our [Classification Algorithms](#8.-Classification-Algorithms) that this corpus is **insufficient** for our purposes to train an efficient and efective clasiffier and detect between Fake and Real news. So we set ourselves **the goal of expanding the Corpus** with more Fake News and Real News.
+We observed in our [Classification Algorithms](#8-Classification-Algorithms) that this corpus is **insufficient** for our purposes to train an efficient and efective clasiffier and detect between Fake and Real news. So we set ourselves **the goal of expanding the Corpus** with more Fake News and Real News.
 
 ## Expand the corpus
 
@@ -177,7 +177,7 @@ We observed in our [Classification Algorithms](#8.-Classification-Algorithms) th
 
 So after a very long search trying to find text data and corpus in Spanish language, we reached to the **[Fake News Corpus (FNC) from several27](https://github.com/several27/FakeNewsCorpus)**. This dataset is composed of millions of news articles mostly scraped from a curated list of **1001 domains** from **[open sources](http://www.opensources.co/)**. The dataset is still work in progress and for now and the public version includes only **9,408,908 articles** (745 out of 1001 domains) most of them in English language, but there are some that are in **Spanish**. This corpus has several labels for the news: **Fake News, Satire, Extreme Bias, Conspiracy Theory, State News, Junk Science, Hate News, clickbait, Unreliable, Political and Credible**. We are only interested in **Fake News, Satire and Reliable** labels.
 
-Due to the **size of the CSV file** that contains all articles, we couldn't upload it to this repository. On the **[Data Transformation](#5.-Data-Transformation) section** we will address how to proceed to extract the articles in Spanish language and with the desired labels.
+Due to the **size of the CSV file** that contains all articles, we couldn't upload it to this repository. On the **[Data Transformation](#5-Data-Transformation) section** we will address how to proceed to extract the articles in Spanish language and with the desired labels.
 
 After extracting all the news, we realized that the articles with the **Reliable label**, only contains articles **very short** articles and from a single source, so **we rejected them for our corpus**.
 
@@ -196,12 +196,12 @@ Id| Category | Topic | Source | Headline | Text |Link |
 Identifier to each instance. | Category of the news (True or Fake). | Topic related to the news. | Name of the source. | Headline of the news. | Raw text of the news. | URL of the source.
 
 
-# 5. Data transformation
+# 5 Data transformation
 
 ------------------
 
 
-# 6. Feature extraction
+# 6 Feature extraction
 
 The Feature Extraction process can be replicated on this notebook: [Feature Extraction notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/feature_extraction/06_Final_notebook_feature_extraction_explained.ipynb).
 
@@ -279,7 +279,7 @@ The second term is the **Inverse Document Frequency (IDF)**, computed as the *lo
 
 
 
-# 7. Exploratory Data Analysis
+# 7 Exploratory Data Analysis
 
 All the content for this section was exported from the following notebook: [Exploratory Data Analysis notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/exploratory_data_analysis/02_Exploratory_data_analysis_final_explained.ipynb)
 
@@ -328,7 +328,7 @@ Reducing the number of variables of a data set naturally comes at the expense of
 
 
 
-# 8. Classification Algorithms
+# 8 Classification Algorithms
 
 If you want to replicate the classification or check out inside of the Algorithms, run this notebook: [Models and Classification Algorithms notebook](https://github.com/pipe11/TFM_fake_news_detector/blob/master/models/11_final_notebook_models_explained.ipynb)
 
@@ -391,7 +391,7 @@ Independently of the classification and comparison results, **all algorithms per
 Without **TF-IDF vectorization** and with **TF-IDF vectorization**:
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)&nbsp;&nbsp;&nbsp;
 
 
 Overall all these algorithms have better predictive power to **predict positives (Real News)**, this means **less recall and more precision** predicting positives, and more recall **predicting negatives (Fake News)**. But the XGBOOST model is more robust than the others models, especially when compared to Random Forest; in this case, **eXtreme Gradient Boosting** algorithm has **better predictive power for both Fake and Real news**.
@@ -400,7 +400,7 @@ Overall all these algorithms have better predictive power to **predict positives
 Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and we will develop a .py script to **scrape newspapers articles** and launch predictions about whether their articles are Fake or Real News. Later on, that script will be productivized to **develop a Web Application**.
 
 
-# 9. App
+# 9 App
 
 After some **streamlit configurations tests** wich can be revised on this notebook: [streamlit configurations](https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/06_Streamlit_configuration.ipynb) we decided to lauch our Web App hosting it at **[Heroku](https://dashboard.heroku.com/)**, it is a **platform as a service (PaaS)** that enables developers to build, run, and operate applications entirely in the cloud.
 
@@ -457,17 +457,17 @@ After this manual deploy, you can enable **automatic deploys** at the heroku con
 
 The final result of this guide and my whole project is the following app: **[es-fake-news-detector]**
 
-# 10. Conclusions
+# 10 Conclusions
 
 ------------------
 
 
-# 11. Future work
+# 11 Future work
 
 ------------------
 
 
-# 12. References
+# 12 References
 
 [European Comission on Fake News](https://ec.europa.eu/knowledge4policy/foresight/topic/increasing-influence-new-governing-systems/fake-news-disinformation-threatens-democracy_en)
 
