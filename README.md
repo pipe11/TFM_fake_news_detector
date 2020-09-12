@@ -357,7 +357,7 @@ We are appliyong **GridSearchCV** in most of the models, its very useful and rel
 ### First approach: Model comparison
 We are going to evaluate the different models considering the following evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**.
 
-![first approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models1.png)
+&nbsp;&nbsp;![first approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models1.png)&nbsp;&nbsp;
 
 **eXtreme Gradient Boosting (XGBOOST)** was the model with the best performance in all the metrics with only the extracted complexity and stylometric features. Looking at its **Confusion Matrix**, we can observe that is the best model for its predictive power on predicting positives and negatives at the same time:
 
@@ -371,7 +371,7 @@ Evaluating the feature importance of the **XGBOOST**, we observe that the **top 
 ### Second approach: Model comparison
 We are going to evaluate the different models considering the following evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**.
 
-![second approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models2.png)
+&nbsp;&nbsp;![second approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models2.png)&nbsp;&nbsp;
 
 **eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving an accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
 
@@ -385,13 +385,13 @@ Evaluating the feature importance of the **XGBOOST**, we observe that the **top 
 ### All models comparison
 Independently of the classification and comparison results, **all algorithms performed with good predictive power** to classify Fake and Real News, and this demonstrates that the **language-independant features** + **TF-IDF vectorizer** features proposed in this project, are **very efficient** to distingish between Fake and Real News. We are looking again at the same evaluation metrics: **Accuracy score**, **Testing AUC score** and **F1 score**:
 
-![all models comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_all_models.png)
+&nbsp;&nbsp;&nbsp;&nbsp;![all models comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_all_models.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
 **Comparison of both XGBOOST Algorithms**
 Without **TF-IDF vectorization** and with **TF-IDF vectorization**:
 
 
-![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)
+&nbsp;&nbsp;&nbsp;&nbsp;![metrics_xgboost](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/metrics_xgboost.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 Overall all these algorithms have better predictive power to **predict positives (Real News)**, this means **less recall and more precision** predicting positives, and more recall **predicting negatives (Fake News)**. But the XGBOOST model is more robust than the others models, especially when compared to Random Forest; in this case, **eXtreme Gradient Boosting** algorithm has **better predictive power for both Fake and Real news**.
@@ -405,7 +405,8 @@ Finally the XGBOOST model is **pickled** along with the TF-IDF transformer and w
 After some **streamlit configurations tests** wich can be revised on this notebook: [streamlit configurations](https://github.com/pipe11/TFM_fake_news_detector/blob/master/predictors/06_Streamlit_configuration.ipynb) we decided to lauch our Web App hosting it at **[Heroku](https://dashboard.heroku.com/)**, it is a **platform as a service (PaaS)** that enables developers to build, run, and operate applications entirely in the cloud.
 
 We followed the [heroku's guide](https://devcenter.heroku.com/articles/getting-started-with-python) to deploy our app with Python language:
-**[1. Create a Heroku Account])https://signup.heroku.com/signup/dc)** which it allows you to syncronize your GitHub repository where you have stored your files.
+
+**[1. Create a Heroku Account](https://signup.heroku.com/signup/dc)** which it allows you to syncronize your GitHub repository where you have stored your files.
 
 **[2. Install Heroku CLI on Git](https://devcenter.heroku.com/articles/getting-started-with-python#set-up)**. This step is note necessary but I recommend the usage of the Heorku CLI for deploy your server properly and check if there are errors.
 
@@ -425,7 +426,6 @@ scikit-learn==0.23.1
 xgboost==1.1.1
 spacy==2.3.2
 https://github.com/explosion/spacy-models/releases/download/es_core_news_md-2.3.1/es_core_news_md-2.3.1.tar.gz#egg=es_core_news_md==2.3.1
-
 ```
 
 - **Procfile**, a text file in the root directory of your application, to explicitly declare what command should be executed to start your app, e.g. on my case:
@@ -446,8 +446,9 @@ enableCORS = false\n\
 " > ~/.streamlit/config.toml
 ```
 
-**- Python script**: A Python script with all the code necessary tu run the app, e.g. on my cas: **fake_news_detector_app.py**
-**- Additional files**: If you want you can add as many images as you want for your **front-end**, if you are using **data or pickle models** you must store it on your repository too.
+- **Python script**: A Python script with all the code necessary tu run the app, e.g. on my cas: **fake_news_detector_app.py**
+
+- **Additional files**: If you want you can add as many images as you want for your **front-end**, if you are using **data or pickle models** you must store it on your repository too.
 
 **4. Deploy Heroku Server**: On my case I used the **Heroku CLI** and the following commands to create my app:
 - ```heroku create 'app_name' --region eu```
