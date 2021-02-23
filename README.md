@@ -416,7 +416,7 @@ We are going to evaluate the different models considering the following evaluati
 
 &nbsp;&nbsp;![second approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models2.png)&nbsp;&nbsp;
 
-**eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving a **95,7%** accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
+**eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving a **95,7%** accuracy record. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
 
 ![confusion matrix xgboost2](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost2.png)
 
