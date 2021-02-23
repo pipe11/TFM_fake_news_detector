@@ -59,7 +59,7 @@ There are few advances in the fake news detection field in the Spanish language,
 
 # 2 Requirements
 
-On this project we are using the work environment proposed throughout this Master, so we'll keep using the **Ubuntu Distribution** for Aindows: **Windows Subsystem Linux (WSL)**, and more specifically we will use Anaconda distribution with **Python 3.6.9**. 
+On this project we are using the work environment proposed throughout this Master, so we'll keep using the **Ubuntu Distribution** for Windows: **Windows Subsystem Linux (WSL)**, and more specifically we will use Anaconda distribution with **Python 3.6.9**. 
 
 ### Python Packges required
 - pandas
@@ -222,7 +222,7 @@ After the creation of the final Corpus, we needed to specify the topic of the **
 
 After these operations, we concatenated the articles from the 3 sources proposed at the **[Datasets and Corpora](4-Datasets-and-Corpora)** section: **[Spanish Fake News Corpus](https://github.com/jpposadas/FakeNewsCorpusSpanish)** built by **Juan Pablo Durán-Posadas and its team** + articles extracted from the **[Fake News Corpus (FNC) from several27](https://github.com/several27/FakeNewsCorpus)** + articles extracted from the **[WebHouse Dataset](https://webhose.io/free-datasets/spanish-news-articles/)**.
 
-This process can be reviewed and replicated at this **[Notebook].(https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**<br>
+This process can be reviewed and replicated at this **[Notebook] (https://github.com/pipe11/TFM_fake_news_detector/blob/master/data_transformation/04_Create_corpus_news_extracted_FNC.ipynb)**
 
 
 **Warning**: The news file is not available in this repository due to its big size. If you want to replicate everything, download it from here: https://github.com/several27/FakeNewsCorpus/releases/tag/v1.0
@@ -383,7 +383,7 @@ For feature selection we are making **2 different focus**:
 
 2. Using the features extracted + features extracted with TFIDF vectorization
 
-Then we applied multiple Machine Learning Classifiers Algorithms on these 2 different approaches, showing the following results.
+Then we applied multiple Machine Learning Classifiers Algorithms on these 2 different approaches, showing the following results:
 
 - **Logistic regression as benchmark**
 - **K-nearest Neighbors**
@@ -416,11 +416,11 @@ We are going to evaluate the different models considering the following evaluati
 
 &nbsp;&nbsp;![second approach model comparison](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/eval_metrics_models2.png)&nbsp;&nbsp;
 
-**eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving an accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
+**eXtreme Gradient Boosting (XGBOOST)** was again the model with the best performance in all the metrics with all the features extracted, achieving a **95,7%** accuracy record of ** %**. If we take a look at its **Confusion Matrix**, we can observe that again is the best algorithm predicting positives and negatives at the same time:
 
 ![confusion matrix xgboost2](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/confusion_matrix_xgboost2.png)
 
-Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **Type Token Ratio of the article text**, **Pro noun ratio of the article** and **'Numer' word**:
+Evaluating the feature importance of the **XGBOOST**, we observe that the **top 5 features** with the most predictive importance are: **Unique words of the article**, **Number of words of the article**, **Type Token Ratio of the article text**, **Pro noun ratio of the article** and **'Number of word**:
 
 ![feature importance xgboost2](https://github.com/pipe11/TFM_fake_news_detector/blob/master/imgs/feature_importance_xgboost2.png)
 
